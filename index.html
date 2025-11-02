@@ -7,12 +7,9 @@
 
   <meta name="description" content="Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto Táxi e Frete. Grátis para usar, grandes benefícios para ganhar!" />
   <link rel="icon" href="logo.png" type="image/png" />
-
-  <!-- Manifesto PWA -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#e09634" />
 
-  <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Gajraj+One&display=swap" rel="stylesheet">
 
   <style>
@@ -30,7 +27,6 @@
       overflow: hidden;
     }
 
-    /* 🔶 Barra Superior (botão de instalar app) */
     header {
       position: fixed;
       top: 0;
@@ -50,16 +46,8 @@
       z-index: 100;
     }
 
-    header:hover {
-      background-color: #f4a93f;
-      transform: scale(1.01);
-    }
-
-    header:active {
-      background-color: #c8832d;
-      color: #fff;
-      transform: scale(0.99);
-    }
+    header:hover { background-color: #f4a93f; transform: scale(1.01); }
+    header:active { background-color: #c8832d; color: #fff; transform: scale(0.99); }
 
     img {
       width: 380px;
@@ -113,16 +101,13 @@
 </head>
 
 <body>
-  <!-- 🔶 Barra Topo -->
-  <header id="installBtn">
-    📲 Instalar App ENTREGO+
-  </header>
+  <header id="installBtn">📲 Instalar App ENTREGO+</header>
 
   <img src="logo.png" alt="Logo Entrego+" />
   <h1>Estamos chegando: 15/11/2025</h1>
 
   <p>
-    Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto táxi e Frete.<br>
+    Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto Táxi e Frete.<br>
     Grátis para usar, grandes benefícios para ganhar!<br><br>
     No dia da inauguração iremos sortear <strong>a cada hora um prêmio</strong> para os inscritos.<br>
     As inscrições estão liberadas — <strong>Cadastre-se agora!</strong>
@@ -136,23 +121,15 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      document.getElementById('installBtn').style.display = 'block';
     });
 
     document.getElementById('installBtn').addEventListener('click', async () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-          alert("✅ ENTREGO+ instalado na tela inicial!");
-        }
         deferredPrompt = null;
-      } else {
-        alert("Se o botão não funcionar, use o navegador para adicionar o app à tela inicial.");
       }
     });
 
-    // Registrar o service worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
