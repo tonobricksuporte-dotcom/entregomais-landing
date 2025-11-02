@@ -3,20 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ENTREGO+ — Seu Aplicativo de Entregas</title>
+  <title>ENTREGO+ — Estamos chegando</title>
 
+  <!-- META TAGS PARA GOOGLE / COMPARTILHAMENTO -->
   <meta name="description" content="Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto Táxi e Frete. Grátis para usar, grandes benefícios para ganhar!" />
+  <meta property="og:title" content="ENTREGO+ — Estamos chegando" />
+  <meta property="og:description" content="No dia da inauguração iremos sortear prêmios incríveis! As inscrições estão abertas." />
+  <meta property="og:image" content="preview-entregomais.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ENTREGO+ — Estamos chegando" />
+  <meta name="twitter:description" content="No dia da inauguração iremos sortear prêmios incríveis! Cadastre-se agora!" />
+  <meta name="twitter:image" content="preview-entregomais.jpg" />
+
+  <!-- ÍCONE E MANIFESTO -->
   <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo.png" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#e09634" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Gajraj+One&display=swap" rel="stylesheet">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ENTREGO+">
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
     body {
       background-color: #0e1827;
       color: #d5e4df;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -27,32 +42,31 @@
       overflow: hidden;
     }
 
+    /* Barra superior */
     header {
+      background-color: #e09634;
+      color: #0e1827;
+      width: 100%;
+      padding: 15px 0;
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      background-color: #e09634;
-      color: #0e1827;
-      padding: 14px 0;
       text-align: center;
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s ease;
       cursor: pointer;
-      user-select: none;
-      font-family: 'Gajraj One', sans-serif;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      z-index: 100;
+      z-index: 10;
     }
 
-    header:hover { background-color: #f4a93f; transform: scale(1.01); }
-    header:active { background-color: #c8832d; color: #fff; transform: scale(0.99); }
+    header:hover {
+      background-color: #f3b24a;
+    }
 
     img {
-      width: 380px;
-      margin-top: 100px;
-      margin-bottom: 35px;
+      width: 220px;
+      margin-top: 80px;
+      margin-bottom: 40px;
       opacity: 0;
       animation: fadeIn 1.5s ease forwards;
     }
@@ -63,15 +77,14 @@
       margin: 0;
       opacity: 0;
       animation: fadeIn 2s ease 0.5s forwards;
-      font-family: 'Gajraj One', sans-serif;
     }
 
     p {
       font-size: 1.1rem;
       color: #d5e4df;
       margin-top: 15px;
-      max-width: 440px;
-      line-height: 1.6;
+      max-width: 420px;
+      line-height: 1.5;
       opacity: 0;
       animation: fadeIn 2s ease 1s forwards;
     }
@@ -83,7 +96,6 @@
       color: #6e7a8c;
       opacity: 0;
       animation: fadeIn 2s ease 1.5s forwards;
-      font-family: 'Poppins', sans-serif;
     }
 
     @keyframes fadeIn {
@@ -92,10 +104,17 @@
     }
 
     @media (max-width: 600px) {
-      img { width: 220px; margin-top: 120px; }
-      h1 { font-size: 1.5rem; }
-      p { font-size: 1rem; max-width: 320px; }
-      header { font-size: 1rem; padding: 12px 0; }
+      img {
+        width: 160px;
+        margin-bottom: 25px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
@@ -105,34 +124,32 @@
 
   <img src="logo.png" alt="Logo Entrego+" />
   <h1>Estamos chegando: 15/11/2025</h1>
-
   <p>
     Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto Táxi e Frete.<br>
     Grátis para usar, grandes benefícios para ganhar!<br><br>
     No dia da inauguração iremos sortear <strong>a cada hora um prêmio</strong> para os inscritos.<br>
     As inscrições estão liberadas — <strong>Cadastre-se agora!</strong>
   </p>
-
   <footer>© 2025 ENTREGO+</footer>
 
   <script>
+    // Instalação PWA com ícone logo.png
     let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
+      installBtn.style.display = 'block';
     });
 
-    document.getElementById('installBtn').addEventListener('click', async () => {
+    installBtn.addEventListener('click', async () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
         deferredPrompt = null;
       }
     });
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
   </script>
 </body>
 </html>
