@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ENTREGO+ — Estamos chegando</title>
+  <title>ENTREGO+ — Seu Aplicativo de Entregas</title>
 
-  <meta name="description" content="Estamos chegando: 15/11/2025 — Você será o único beneficiado com a nossa ferramenta ENTREGO+. E no dia da inauguração, começaremos distribuindo prêmios incríveis!" />
+  <meta name="description" content="Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto Táxi e Frete. Grátis para usar, grandes benefícios para ganhar!" />
   <link rel="icon" href="logo.png" type="image/png" />
+
+  <!-- Manifesto PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#e09634" />
 
   <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Gajraj+One&display=swap" rel="stylesheet">
@@ -26,7 +30,7 @@
       overflow: hidden;
     }
 
-    /* 🔶 Barra Superior (funciona como botão) */
+    /* 🔶 Barra Superior (botão de instalar app) */
     header {
       position: fixed;
       top: 0;
@@ -48,7 +52,6 @@
 
     header:hover {
       background-color: #f4a93f;
-      color: #0b1523;
       transform: scale(1.01);
     }
 
@@ -110,27 +113,48 @@
 </head>
 
 <body>
-  <!-- 🔶 Barra Topo (agora é o botão de download) -->
-  <header onclick="baixarLogo()">
-    🔽 Download App ENTREGO+
+  <!-- 🔶 Barra Topo -->
+  <header id="installBtn">
+    📲 Instalar App ENTREGO+
   </header>
 
   <img src="logo.png" alt="Logo Entrego+" />
   <h1>Estamos chegando: 15/11/2025</h1>
-  <p>Você será o único beneficiado com a nossa ferramenta.<br>
-  E no dia da inauguração, começaremos <strong>distribuindo prêmios incríveis!</strong></p>
+
+  <p>
+    Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto táxi e Frete.<br>
+    Grátis para usar, grandes benefícios para ganhar!<br><br>
+    No dia da inauguração iremos sortear <strong>a cada hora um prêmio</strong> para os inscritos.<br>
+    As inscrições estão liberadas — <strong>Cadastre-se agora!</strong>
+  </p>
 
   <footer>© 2025 ENTREGO+</footer>
 
   <script>
-    function baixarLogo() {
-      const link = document.createElement('a');
-      link.href = 'logo.png';
-      link.download = 'entrego-app.png';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      alert("📱 Download iniciado! Obrigado por acompanhar o ENTREGO+ 🚀");
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').style.display = 'block';
+    });
+
+    document.getElementById('installBtn').addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          alert("✅ ENTREGO+ instalado na tela inicial!");
+        }
+        deferredPrompt = null;
+      } else {
+        alert("Se o botão não funcionar, use o navegador para adicionar o app à tela inicial.");
+      }
+    });
+
+    // Registrar o service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
     }
   </script>
 </body>
