@@ -5,17 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ENTREGO+ — Estamos chegando</title>
 
-  <!-- META TAGS PARA GOOGLE / COMPARTILHAMENTO -->
+  <!-- META TAGS -->
   <meta name="description" content="Seu Aplicativo de Tele Entrega, Corridas de Carro, Moto Táxi e Frete. Grátis para usar, grandes benefícios para ganhar!" />
   <meta property="og:title" content="ENTREGO+ — Estamos chegando" />
   <meta property="og:description" content="No dia da inauguração iremos sortear prêmios incríveis! As inscrições estão abertas." />
   <meta property="og:image" content="preview-entregomais.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ENTREGO+ — Estamos chegando" />
-  <meta name="twitter:description" content="No dia da inauguração iremos sortear prêmios incríveis! Cadastre-se agora!" />
-  <meta name="twitter:image" content="preview-entregomais.jpg" />
 
   <!-- ÍCONE E MANIFESTO -->
   <link rel="icon" href="logo.png" type="image/png" />
@@ -64,7 +60,8 @@
     }
 
     img {
-      width: 220px;
+      width: 360px;
+      max-width: 90%;
       margin-top: 80px;
       margin-bottom: 40px;
       opacity: 0;
@@ -83,7 +80,7 @@
       font-size: 1.1rem;
       color: #d5e4df;
       margin-top: 15px;
-      max-width: 420px;
+      max-width: 440px;
       line-height: 1.5;
       opacity: 0;
       animation: fadeIn 2s ease 1s forwards;
@@ -105,15 +102,15 @@
 
     @media (max-width: 600px) {
       img {
-        width: 160px;
+        width: 260px;
         margin-bottom: 25px;
       }
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
       p {
         font-size: 1rem;
-        max-width: 300px;
+        max-width: 320px;
       }
     }
   </style>
@@ -146,7 +143,7 @@
     installBtn.addEventListener('click', async () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
+        await deferredPrompt.userChoice;
         deferredPrompt = null;
       }
     });
