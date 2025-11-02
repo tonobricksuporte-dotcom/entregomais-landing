@@ -5,61 +5,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ENTREGO+ — Estamos chegando</title>
 
-  <!-- SEO / Social -->
-  <meta name="description" content="Estamos chegando: 15/11/2025 — Você será o único beneficiado com a nossa ferramenta ENTREGO+. E no dia da inauguração, começaremos distribuindo prêmios!" />
-  <meta property="og:title" content="ENTREGO+ — Estamos chegando" />
-  <meta property="og:description" content="Você será o único beneficiado com a nossa ferramenta. Lançamento em 15/11/2025 com prêmios e recompensas exclusivas!" />
-  <meta property="og:image" content="logo.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_BR" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ENTREGO+ — Estamos chegando" />
-  <meta name="twitter:description" content="Você será o único beneficiado com a nossa ferramenta. Lançamento em 15/11/2025 com prêmios exclusivos!" />
-  <meta name="twitter:image" content="logo.png" />
-
-  <!-- Favicon -->
+  <meta name="description" content="Estamos chegando: 15/11/2025 — Você será o único beneficiado com a nossa ferramenta ENTREGO+. E no dia da inauguração, começaremos distribuindo prêmios incríveis!" />
   <link rel="icon" href="logo.png" type="image/png" />
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Gajraj+One&display=swap');
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Gajraj+One&display=swap" rel="stylesheet">
 
-    :root{
-      --bg:#0e1827; --fg:#d5e4df; --brand:#e09634; --muted:#6e7a8c;
+  <style>
+    body {
+      background-color: #0e1827;
+      color: #d5e4df;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
     }
-    *{box-sizing:border-box}
-    body{
-      background:var(--bg); color:var(--fg);
-      font-family:'Gajraj One',sans-serif;
-      display:flex; flex-direction:column; justify-content:center; align-items:center;
-      height:100vh; margin:0; text-align:center; overflow:hidden;
+
+    /* 🔶 Barra Superior (funciona como botão) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #e09634;
+      color: #0e1827;
+      padding: 14px 0;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'Gajraj One', sans-serif;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 100;
     }
-    img{
-      width:380px; margin-bottom:35px; opacity:0; animation:fadeIn 1.5s ease forwards;
+
+    header:hover {
+      background-color: #f4a93f;
+      color: #0b1523;
+      transform: scale(1.01);
     }
-    h1{
-      font-size:2rem; color:var(--brand); margin:0; opacity:0; animation:fadeIn 2s ease .5s forwards;
+
+    header:active {
+      background-color: #c8832d;
+      color: #fff;
+      transform: scale(0.99);
     }
-    p{
-      font-size:1.2rem; margin-top:15px; max-width:420px; line-height:1.5;
-      opacity:0; animation:fadeIn 2s ease 1s forwards;
+
+    img {
+      width: 380px;
+      margin-top: 100px;
+      margin-bottom: 35px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
     }
-    footer{
-      position:absolute; bottom:20px; font-size:.9rem; color:var(--muted);
-      opacity:0; animation:fadeIn 2s ease 1.5s forwards;
+
+    h1 {
+      font-size: 2rem;
+      color: #e09634;
+      margin: 0;
+      opacity: 0;
+      animation: fadeIn 2s ease 0.5s forwards;
+      font-family: 'Gajraj One', sans-serif;
     }
-    @keyframes fadeIn{from{opacity:0; transform:translateY(15px)} to{opacity:1; transform:translateY(0)}}
-    @media (max-width:600px){
-      img{width:200px; margin-bottom:25px}
-      h1{font-size:1.6rem}
-      p{font-size:1rem; max-width:300px}
+
+    p {
+      font-size: 1.1rem;
+      color: #d5e4df;
+      margin-top: 15px;
+      max-width: 440px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 2s ease 1s forwards;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #6e7a8c;
+      opacity: 0;
+      animation: fadeIn 2s ease 1.5s forwards;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      img { width: 220px; margin-top: 120px; }
+      h1 { font-size: 1.5rem; }
+      p { font-size: 1rem; max-width: 320px; }
+      header { font-size: 1rem; padding: 12px 0; }
     }
   </style>
 </head>
+
 <body>
+  <!-- 🔶 Barra Topo (agora é o botão de download) -->
+  <header onclick="baixarLogo()">
+    🔽 Download App ENTREGO+
+  </header>
+
   <img src="logo.png" alt="Logo Entrego+" />
   <h1>Estamos chegando: 15/11/2025</h1>
   <p>Você será o único beneficiado com a nossa ferramenta.<br>
-     E no dia da inauguração, começaremos <strong>distribuindo prêmios incríveis!</strong></p>
+  E no dia da inauguração, começaremos <strong>distribuindo prêmios incríveis!</strong></p>
+
   <footer>© 2025 ENTREGO+</footer>
+
+  <script>
+    function baixarLogo() {
+      const link = document.createElement('a');
+      link.href = 'logo.png';
+      link.download = 'entrego-app.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      alert("📱 Download iniciado! Obrigado por acompanhar o ENTREGO+ 🚀");
+    }
+  </script>
 </body>
 </html>
